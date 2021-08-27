@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="ns1"  default="r1"/> <!-- Note: args can be string, int or double -->
+  <arg name="ns2"  default="r2"/>
+
+  <!--node name="two_diff_robots_ns_service" pkg="ros_cpp_py_basics" type="two_diff_robots_ns_service" output="screen" respawn="false" args="$(arg ns1) $(arg ns2)" /-->
+  <!--node name="two_diff_robots_ns_service" pkg="ros_cpp_py_basics" type="two_diff_robots_ns_service.py" output="screen" respawn="false" args="$(arg ns1) $(arg ns2)" /-->
+
+</launch>
