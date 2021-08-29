@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """This python script is the equivalent to the 'src/simple_motion_diff_robot.cpp', so it executes the same tasks.
-For more information, please refers to that source file.
+For more information, please refer to that source file.
 
 -- To finish this node, please press 'ctrl+C' keys."""
 
@@ -38,10 +38,10 @@ def main_function():
 	vel_pub = rospy.Publisher('/cmd_vel', Twist, queue_size=10) #To publish in the topic
 	rospy.Subscriber('/odom',Odometry, odomCallback) #To subscribe to the topic
 	
-	#Importnat: Due to a differential type mobile robot is used, the following fields are ignore
+	#Important: Due to a differential type mobile robot is used, the following fields are ignored
 	vel_msg.linear.y = vel_msg.linear.z = vel_msg.angular.x = vel_msg.angular.y = 0;
 
-	#Define constant velocities (circular movement)
+	#Assign constant velocities (circular movement)
 	vel_msg.linear.x = 0.1
 	vel_msg.angular.z = 0.2
 
