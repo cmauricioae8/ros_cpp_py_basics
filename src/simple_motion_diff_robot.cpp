@@ -52,10 +52,10 @@ int main(int argc, char **argv)
   vel_pub = nh.advertise<geometry_msgs::Twist>("/cmd_vel", 10); //To publish in the topic
   pose_sub = nh.subscribe("/odom", 10, OdomCallback); //To subscribe to the topic
 
-  //Importnat: Due to a differential type mobile robot is used, the following fields are ignore 
+  //Important: Due to a differential type mobile robot is used, the following fields are ignore 
   vel_msg.linear.y = vel_msg.linear.z = vel_msg.angular.x =  vel_msg.angular.y = 0;
 
-  //Define constant velocities (circular movement)
+  //Assign constant velocities (circular movement)
   vel_msg.linear.x = 0.1; //Translational velocity V [m/s]
   vel_msg.angular.z = 0.2; //Rotational velocity W [rad/s]
   
