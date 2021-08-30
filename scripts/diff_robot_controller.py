@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """This python script is the equivalent to the 'src/diff_robot_controller.cpp', so it executes the same tasks.
-For more information, please refers to that source file.
+For more information, please refer to that source file.
 
 -- To finish this node and stop the mobile robot, please press 'ctrl+C' or 'q' key."""
 
@@ -27,7 +27,7 @@ l = 0.1
 
 vel_msg = Twist()
 error_msg = Pose2D()
-t = 0.0; t0 = 0.0; V_max = 0.22; W_max = 2.84; #timer, initial time, maximum velocities [m/s, rad/s], respectively, for a burger type
+t = 0.0; t0 = 0.0; V_max = 0.22; W_max = 2.84; #Timer, initial time, maximum velocities [m/s, rad/s], respectively, for a burger type
 T = 100.0; k = 0.15; #Trajectory period, controller gains kx = ky = k
 ex = 0.0; ey = 0.0; V = 0.0; W = 0.0
 
@@ -100,13 +100,13 @@ def main_function():
 	file_obj = open("data_py.txt","w+") #If only the filename is given
 	#the program will create the file in "/home/user/"
 	
-	#Importnat: Due to a differential type mobile robot is used, the following fields are ignore
+	#Important: Due to a differential type mobile robot is used, the following fields are ignored
 	vel_msg.linear.y = vel_msg.linear.z = vel_msg.angular.x = vel_msg.angular.y = 0;
 	
 	error_msg.theta = 0 #Since the orientation angle is a sub-actuated state, this field is assigned equal to zero
 
 	
-	print("To finish this node and to stop the robot, please press 'ESC' key\n")
+	print("To finish this node and to stop the robot, please press 'ctrl+C' or 'q' key\n")
 	rospy.logwarn("To start the movement, the simulation must be running\n\n")
 	
 	global t, t0 #t and t0 are global to be used in velocity_controller
@@ -141,7 +141,8 @@ def main_function():
 		key = getKey()
 		if(key == 'q' or key == '\x03'): #\x03 is ctrl+C
 			break
-			rate.sleep() #spinOnce() function does not exist in python
+		
+		rate.sleep() #spinOnce() function does not exist in python
 	
 	file_obj.close()
 
