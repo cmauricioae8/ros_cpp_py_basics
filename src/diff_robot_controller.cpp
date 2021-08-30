@@ -50,7 +50,7 @@ FILE *fpdata; //Define a pointer to a file
 double x, y, yaw, l = 0.1; //Global variables (robot posture) and the offset of the outside point
 int key;
 
-double t, t0, V_max = 0.22, W_max = 2.84; //timer, initial time, maximum velocities [m/s, rad/s], respectively, for a burger type
+double t, t0, V_max = 0.22, W_max = 2.84; //Timer, initial time, maximum velocities [m/s, rad/s], respectively, for a burger type
 
 double T = 100, k = 0.15; //Trajectory period, controller gains kx = ky = k
 double ex, ey, Xd, Yd, Xdp, Ydp; //Tracking errors, desired position, and time derivative, respectively
@@ -133,7 +133,7 @@ int main(int argc, char **argv)
   //fpdata = fopen("/home/mau/tutorials_catkin_ws/src/ros_cpp_ry_basics/matlab_script/data.txt","w");
   fpdata = fopen("data.txt","w"); //If only the filename is given, the program will create the file in "/home/user/"
 
-  //Importnat: Due to a differential type mobile robot is used, the following fields are ignore 
+  //Important: Due to a differential type mobile robot is used, the following fields are ignored
   vel_msg.linear.y = vel_msg.linear.z = vel_msg.angular.x =  vel_msg.angular.y = 0;
   error_msg.theta = 0; //Since the orientation angle is a sub-actuated state, this field is assigned equal to zero
 
@@ -155,7 +155,7 @@ int main(int argc, char **argv)
     error_pub.publish(error_msg); //Publish the tracking errors
 
     //Write in a file
-    fprintf(fpdata,"%.3f\t%.3f\t%.3f\t%.3f\t%.3f\t%.3f\t%.2f\n", t,Xd,Yd,x,y,V,W);
+    fprintf(fpdata,"%.3f\t%.3f\t%.3f\t%.3f\t%.3f\t%.3f\t%.2f\n", t,Xd,Yd,x,y,V,W); //The (p_x, p_y) point may be saved as well
 
     if(counter == 25){ //Frequency divisor
       printf("t: %.2f\tex: %.3f\tey: %.3f\tV: %.3f\tW: %.2f\n", t,ex,ey,V,W); //Print in terminal some variables
