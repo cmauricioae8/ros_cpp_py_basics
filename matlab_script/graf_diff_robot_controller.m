@@ -10,11 +10,11 @@ D = load('/home/mau/data_py.txt'); %Default path of the data file
 t = D(:,1);
 p0 = 2; pf = length(t); t=t(p0:pf); %This is to omit initial values
 
-Xd = D((p0:pf),2); Yd = D((p0:pf),3);
-x = D((p0:pf),4);  y = D((p0:pf),5);
+Xd = D((p0:pf),2); Yd = D((p0:pf),3); %Note: Desired position for the outside point
+x = D((p0:pf),4);  y = D((p0:pf),5); %Position of the midpoint of the rear wheels axis. NOT the outside point
 V = D((p0:pf),6);  W = D((p0:pf),7);
 
-figure(1)   %Trajectories on the horizontal plane and control signals ---------------------
+figure(1)   %Trajectories on the horizontal plane ---------------------
 %subplot(2,1,1) %rows = 2, cols = 1, position = 1
 plot(Xd(:),Yd(:),'--k','LineWidth',1.5);
 hold on, grid on, axis equal, axis([-1.2 1.2 -1.2 1.2])
@@ -23,7 +23,7 @@ xlabel('X_G [m]'), ylabel('Y_G [m]')
 plot(x(:),y(:),'--b','LineWidth',1.5);
 legend('R_d','R') %Latex notation can be used
 
-figure(2)
+figure(2) %Control signals
 %subplot(2,1,2)
 plot(t,V(:),'k','LineWidth',1.2)
 grid on, hold on
