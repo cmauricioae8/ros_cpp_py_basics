@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """This python script is the equivalent to the 'src/two_diff_robots_ns_service.cpp', so it executes the same tasks.
-For more information, please refers to that source file.
+For more information, please refer to that source file.
 
 -- To finish this node and stop the mobile robots, please press 'ctrl+C' or 'q' key."""
 
@@ -76,7 +76,7 @@ def main_function(ns1, ns2):
 	#rospy.wait_for_service('/gazebo/reset_simulation')
 	reset_sim_srv = rospy.ServiceProxy('/gazebo/reset_simulation', Empty)
 
-	#Importnat: Due to a differential type mobile robot is used, the following fields are ignore
+	#Important: Due to a differential type mobile robot is used, the following fields are ignored
 	vel_msg1.linear.y = vel_msg1.linear.z = vel_msg1.angular.x = vel_msg1.angular.y = 0
 	vel_msg2.linear.y = vel_msg2.linear.z = vel_msg2.angular.x = vel_msg2.angular.y = 0
 
@@ -90,7 +90,7 @@ def main_function(ns1, ns2):
 	t0 = rospy.Time.now().to_sec()
 	
 	while(1):
-		t = rospy.Time.now().to_sec()-t0 #Compute the controller time
+		t = rospy.Time.now().to_sec()-t0
 		
 		vel_msg1.linear.x = 0.1; vel_msg1.angular.z = 0.5
 		vel_pub1.publish(vel_msg1); #Publish the control signals
