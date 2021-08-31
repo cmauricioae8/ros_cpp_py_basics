@@ -1,7 +1,7 @@
 /*
 @description:
 This node requires the robots' namespace given from shell by the user, to publish and subscribe to the corresponding robots' topics. Any controller is implemented.
-The traslational and rotational velocity of each mobile robot, are published in the "ns1/cmd_vel" and "ns2/cmd_vel" topics, respectively.
+Both the traslational and rotational velocity of each mobile robot, are published in the "ns1/cmd_vel" and "ns2/cmd_vel" topics, respectively.
 Also, the robots' posture are received from the "ns1/odom" and "ns2/odom" topics, respectively.
 The kbhit function is implemented to use keyboard events.
 
@@ -25,7 +25,7 @@ $ roslaunch ros_cpp_py_basics two_diff_robots_ns.launch
 #include "ros/ros.h"
 #include "geometry_msgs/Twist.h"
 #include "nav_msgs/Odometry.h"
-#include "tf/transform_broadcaster.h" //Required for using the ft class
+#include "tf/transform_broadcaster.h" //Required for using the tf class
 #include "std_srvs/Empty.h"  //Required for /gazebo/reset_simulation. ROS service type
 //Includes needed by keyboard events (kbhit function implemented in Linux)
 #include <termios.h>
@@ -128,7 +128,7 @@ int main(int argc, char **argv)
   }
 
   string ns1 = argv[1], ns2 = argv[2]; //Robots' namespace
-  /*Importnat: To get an int/double variable from command line, a function to convert a string chain to an integer/double number must be used.
+  /*Important: To get an int/double variable from command line, a function to convert a string chain to an integer/double number must be used.
   int num_int = string2int(ns1); cout << num_int << endl;
   double num_dob = string2double(ns2); cout << num_dob << endl;*/
 
@@ -146,7 +146,7 @@ int main(int argc, char **argv)
 
   reset_sim_client = nh.serviceClient<std_srvs::Empty>("/gazebo/reset_simulation"); //To call the service
 
-  //Importnat: Due to a differential type mobile robot is used, the following fields are ignore 
+  //Important: Due to a differential type mobile robot is used, the following fields are ignored
   vel_msg1.linear.y = vel_msg1.linear.z = vel_msg1.angular.x =  vel_msg1.angular.y = 0;
   vel_msg2.linear.y = vel_msg2.linear.z = vel_msg2.angular.x =  vel_msg2.angular.y = 0;
 
@@ -159,7 +159,7 @@ int main(int argc, char **argv)
   t0 = ros::Time::now().toSec(); //Get the initial simulation time
 
   do{
-    t = ros::Time::now().toSec()-t0; //Compute the controller time    
+    t = ros::Time::now().toSec()-t0;    
   
     vel_msg1.linear.x = 0.1; vel_msg1.angular.z = 0.5;
     vel_pub1.publish(vel_msg1); //Publish the control signals
