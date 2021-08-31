@@ -31,7 +31,7 @@ t = 0.0; t0 = 0.0; V_max = 0.22; W_max = 2.84; #Timer, initial time, maximum vel
 T = 100.0; k = 0.15; #Trajectory period, controller gains kx = ky = k
 ex = 0.0; ey = 0.0; V = 0.0; W = 0.0
 
-def getKey(): #Function to use keyboerd events on Linux
+def getKey(): #Function to use keyboard events on Linux
     if os.name == 'nt':
       return msvcrt.getch()
 
